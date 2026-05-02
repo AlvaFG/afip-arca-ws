@@ -77,7 +77,7 @@ class DocsScraper:
         if any(re.search(pat, url) for pat in self.exclude_patterns):
             return False
         path = urlparse(url).path.lower()
-        return path.endswith(self.include_extensions) or path.endswith("/")
+        return path.endswith(self.include_extensions)
 
     def is_asset_link(self, url: str) -> bool:
         if not url.startswith(self.allowed_prefix):
@@ -147,17 +147,19 @@ class DocsScraper:
     # ---------- main loop ----------
     def scrape(self, start_urls: list[str] | None = None) -> dict:
         queue: list[str] = list(start_urls) if start_urls else list(self.start_urls)
-        stats = {"pages": 0, "errors": 0, "skipped": 0}
+        stats = {"pages": 0, "errors": 0, "skipped": 0, "requests": 0}
         index_entries: list[tuple[str, str]] = []
         discovered_assets: set[str] = set()
+        written_paths: set[Path] = set()
 
-        while queue and stats["pages"] < self.max_pages:
+        while queue and stats["requests"] < self.max_pages:
             url = queue.pop(0)
             if url in self.visited:
                 continue
             self.visited.add(url)
+            stats["requests"] += 1
 
-            print(f"[{stats['pages']+1:>3}] {url}")
+            print(f"[{stats['requests']:>3}] {url}")
             html = self.fetch(url)
             if html is None:
                 stats["errors"] += 1
@@ -169,6 +171,17 @@ class DocsScraper:
                 stats["skipped"] += 1
             else:
                 out = self.url_to_path(url)
+                if out in written_paths:
+                    print(f"  ⚠  output collision: {out.name} — skipping {url}")
+                    stats["skipped"] += 1
+                    doc_links, asset_links = self.discover_links(html, url)
+                    for link in doc_links:
+                        if link not in self.visited:
+                            queue.append(link)
+                    discovered_assets.update(asset_links)
+                    time.sleep(self.delay)
+                    continue
+                written_paths.add(out)
                 out.parent.mkdir(parents=True, exist_ok=True)
                 fm_fields = {
                     "source_url": url,
@@ -200,22 +213,21 @@ class DocsScraper:
         return stats
 
     def _write_index(self, entries: list[tuple[str, str]]):
-        if not entries:
-            return
         lines = [
             "# AFIP/ARCA Web Services — Documentation Index",
             "",
-            f"_Auto-generated from {self.base_url}. See `_meta.json` for the last scrape date._",
-            "",
-            f"**Total pages:** {len(entries)}",
-            "",
-            "## Pages",
+            f"_Auto-generated from {self.base_url}. See `_meta.json` for the last scrape date and page count._",
             "",
         ]
-        for title, path in sorted(entries, key=lambda x: x[1]):
-            lines.append(f"- [{title}]({path})")
+        if not entries:
+            lines += ["", "_No pages were scraped on the last run — see `_meta.json`._", ""]
+        else:
+            lines += ["## Pages", ""]
+            for title, path in sorted(entries, key=lambda x: x[1]):
+                lines.append(f"- [{title}]({path})")
         # write to README.md (not index.md) to avoid clashing with a scraped page
         # whose URL maps to docs/index.md
+        self.output_dir.mkdir(parents=True, exist_ok=True)
         (self.output_dir / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     def _write_assets_index(self, assets: list[str]):

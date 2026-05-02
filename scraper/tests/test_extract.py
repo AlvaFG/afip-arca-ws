@@ -54,3 +54,30 @@ def test_discover_links_separates_docs_and_assets(scraper):
     docs, assets = scraper.discover_links(html, "https://www.afip.gob.ar/ws/")
     assert "https://www.afip.gob.ar/ws/programadores/certificados-digitales.asp" in docs
     assert "https://www.afip.gob.ar/ws/documentacion/wsaa-manual.pdf" in assets
+
+
+def test_extract_preserves_table_as_markdown_pipe_table(scraper):
+    html = FIXTURE.read_text(encoding="utf-8")
+    _, md = scraper.extract_content(html)
+    assert "|" in md
+    assert "Ambiente" in md and "URL" in md
+
+
+def test_assets_index_is_sorted_and_writes_file(scraper, tmp_path):
+    assets = [
+        "https://www.afip.gob.ar/ws/z.wsdl",
+        "https://www.afip.gob.ar/ws/a.pdf",
+        "https://www.afip.gob.ar/ws/m.xsd",
+    ]
+    scraper._write_assets_index(sorted(assets))
+    out = (tmp_path / "_assets-index.md").read_text(encoding="utf-8")
+    a_pos = out.index("a.pdf")
+    m_pos = out.index("m.xsd")
+    z_pos = out.index("z.wsdl")
+    assert a_pos < m_pos < z_pos
+
+
+def test_index_is_written_even_with_no_pages(scraper, tmp_path):
+    scraper._write_index([])
+    readme = (tmp_path / "README.md").read_text(encoding="utf-8")
+    assert "No pages were scraped" in readme
