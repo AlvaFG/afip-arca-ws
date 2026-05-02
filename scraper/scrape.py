@@ -159,13 +159,16 @@ class DocsScraper:
             else:
                 out = self.url_to_path(url)
                 out.parent.mkdir(parents=True, exist_ok=True)
-                frontmatter = (
-                    f"---\n"
-                    f'source_url: "{url}"\n'
-                    f'title: "{title.replace(chr(34), chr(39))}"\n'
-                    f"scraped_at: {time.strftime('%Y-%m-%d')}\n"
-                    f"---\n\n"
-                )
+                fm_fields = {
+                    "source_url": url,
+                    "title": title.replace('"', "'"),
+                }
+                fm_lines = ["---"]
+                for key in sorted(fm_fields):
+                    fm_lines.append(f'{key}: "{fm_fields[key]}"')
+                fm_lines.append("---")
+                fm_lines.append("")
+                frontmatter = "\n".join(fm_lines) + "\n"
                 out.write_text(frontmatter + f"# {title}\n\n{markdown}\n", encoding="utf-8")
                 rel = out.relative_to(self.output_dir).as_posix()
                 index_entries.append((title, rel))
@@ -179,6 +182,7 @@ class DocsScraper:
             time.sleep(self.delay)
 
         self._write_index(index_entries)
+        self._write_meta(index_entries)
         return stats
 
     def _write_index(self, entries: list[tuple[str, str]]):
@@ -187,8 +191,7 @@ class DocsScraper:
         lines = [
             "# AFIP/ARCA Web Services — Documentation Index",
             "",
-            f"_Auto-generated from {self.base_url}_  ",
-            f"_Last update: {time.strftime('%Y-%m-%d')}_",
+            f"_Auto-generated from {self.base_url}. See `_meta.json` for the last scrape date._",
             "",
             f"**Total pages:** {len(entries)}",
             "",
@@ -200,6 +203,18 @@ class DocsScraper:
         # write to README.md (not index.md) to avoid clashing with a scraped page
         # whose URL maps to docs/index.md
         (self.output_dir / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    def _write_meta(self, entries: list[tuple[str, str]]):
+        import json
+        meta = {
+            "page_count": len(entries),
+            "scraped_at": time.strftime("%Y-%m-%d"),
+            "source": self.base_url,
+        }
+        (self.output_dir / "_meta.json").write_text(
+            json.dumps(meta, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
 
 
 def load_config(path: Path) -> dict:
