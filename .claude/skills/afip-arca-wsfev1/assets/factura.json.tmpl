@@ -1,0 +1,33 @@
+{
+  "Auth": {
+    "Token": "{{TA_TOKEN}}",
+    "Sign": "{{TA_SIGN}}",
+    "Cuit": "{{CUIT_EMISOR}}"
+  },
+  "FeCAEReq": {
+    "FeCabReq": {
+      "CantReg": 1,
+      "PtoVta": {{PTO_VTA}},
+      "CbteTipo": {{CBTE_TIPO}}
+    },
+    "FeDetReq": {
+      "FECAEDetRequest": [{
+        "Concepto": 1,
+        "DocTipo": 80,
+        "DocNro": "{{CUIT_RECEPTOR}}",
+        "CbteDesde": {{CBTE_NRO}},
+        "CbteHasta": {{CBTE_NRO}},
+        "CbteFch": "{{YYYYMMDD}}",
+        "ImpTotal": 121.00,
+        "ImpTotConc": 0,
+        "ImpNeto": 100.00,
+        "ImpOpEx": 0,
+        "ImpIVA": 21.00,
+        "ImpTrib": 0,
+        "MonId": "PES",
+        "MonCotiz": 1,
+        "Iva": [{ "Id": 5, "BaseImp": 100.00, "Importe": 21.00 }]
+      }]
+    }
+  }
+}
