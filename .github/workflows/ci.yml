@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  scraper-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scraper/requirements.txt
+      - run: pip install -r scraper/requirements.txt
+      - name: Ruff
+        run: ruff check scraper/
+      - name: Pytest
+        working-directory: scraper
+        run: python -m pytest -v
+
+  examples-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Compile every example .py and script .py
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            echo "→ $f"
+            python -m py_compile "$f" || fail=1
+          done < <(find .claude/skills \( -path '*/examples/python/*.py' -o -path '*/scripts/*.py' \))
+          exit $fail
+
+  examples-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - name: Install + tsc --noEmit per node example dir
+        run: |
+          fail=0
+          while IFS= read -r d; do
+            echo "→ $d"
+            (cd "$d" && npm install --silent && npx tsc --noEmit) || fail=1
+          done < <(find .claude/skills -type d -path '*/examples/node')
+          exit $fail
+
+  examples-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: "8.2" }
+      - name: php -l on every example .php
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            echo "→ $f"
+            php -l "$f" || fail=1
+          done < <(find .claude/skills -path '*/examples/php/*.php')
+          exit $fail
+
+  examples-bash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: shellcheck every .sh under skills
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            echo "→ $f"
+            shellcheck "$f" || fail=1
+          done < <(find .claude/skills -name '*.sh')
+          exit $fail
+
+  skill-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install PyYAML
+      - name: Verify SKILL.md frontmatter
+        run: python .github/scripts/verify_skill_frontmatter.py
