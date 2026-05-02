@@ -63,10 +63,32 @@ class DocsScraper:
             if "html" not in ctype:
                 print(f"  ⏭  skip non-html ({ctype})")
                 return None
-            return resp.text
+            html = resp.text
+            # AFIP serves index pages as <meta http-equiv="refresh"> stubs
+            # that redirect to the real content page. Follow up to 3 hops.
+            for _ in range(3):
+                target = self._extract_meta_refresh(html, str(resp.url))
+                if not target:
+                    break
+                print(f"  ↪  meta-refresh → {target}")
+                resp = self.client.get(target)
+                resp.raise_for_status()
+                html = resp.text
+            return html
         except httpx.HTTPError as e:
             print(f"  ❌ {type(e).__name__}: {e}")
             return None
+
+    META_REFRESH_RE = re.compile(
+        r'<meta[^>]+http-equiv=["\']?refresh["\']?[^>]+content=["\']?\s*\d+\s*;\s*url=([^"\'>\s]+)',
+        re.IGNORECASE,
+    )
+
+    def _extract_meta_refresh(self, html: str, base_url: str) -> str | None:
+        m = self.META_REFRESH_RE.search(html[:2000])
+        if not m:
+            return None
+        return urljoin(base_url, m.group(1))
 
     # ---------- link discovery ----------
     ASSET_EXTENSIONS = (".wsdl", ".xsd", ".pdf", ".zip")

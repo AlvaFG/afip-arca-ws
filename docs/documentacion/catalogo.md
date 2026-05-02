@@ -1,0 +1,414 @@
+---
+source_url: "https://www.afip.gob.ar/ws/documentacion/catalogo.asp"
+title: "Web Services SOAP"
+---
+
+# Web Services SOAP
+
+## Catálogo de otros WS de negocio disponibles
+
+A continuación se muestra el catálogo de WSN que ofrece ARCA. Seleccione el que le interese para ver la documentación disponible para el programador.
+
+**IMPORTANTE:** Para usar ciertos servicios se requieren autorizaciones y acuerdos especiales con ARCA.
+
+AGR (Reproweb)
+
+- [Manual para el desarrollador V1.0](/ws/agrREPROWEB/manual_desarrollador_wsagr.pdf)
+- [Resolución General N° 4035](http://biblioteca.afip.gob.ar/dcp/REAG01004035_2017_04_27)
+
+Automatización Res. Revocación A.P.E. (Obras Sociales)
+
+Webservice para envío automático por parte del organismo A.P.E. del Ministerio de Salud, de las Resoluciones de Revocación emitidas para el cobro de deudas que mantienen las Obras Sociales con dicho organismo. Estas RR son procesadas internamente por el sistema S.T.E. (Sistema de Transferencias Externas) que se encarga de retener de la distribución previsional de cada O.S. los fondos adeudados y transferirlos al A.P.E. a través de Notas de Transferencia enviadas al B.N.A. La funcionalidad descripta está reglamentada por el Decreto 213/04.
+
+- [Decreto 213/04](http://biblioteca.afip.gob.ar/dcp/DEC_C_000213_2004_02_19)
+
+Bonos Fiscales Electrónicos (WSBFE)
+
+Permite la autorización de comprobantes electrónicos, a fin de gestionar los Bonos en la Secretaría de Industria según RG 2557.
+
+- [Manual para el desarrollador](/ws/WSBFE/WSBFE - Manual para el desarrollador_V1_1.pdf)
+- [Guia Adicional para el programador](/ws/WSBFE/WSBFE-GuiaAdicionalParaElProgramador.pdf)
+
+**Ejemplos:**
+
+Carta de Porte Electrónica (WSCPE)
+
+Manual del desarrollador:
+
+- [Versión 2.2.0](/ws/documentos/manual-wscpe.pdf)
+
+Certificados DNRPA (WSCTA)
+
+Permite la consulta por parte de la Dirección Nacional de los Registros de la Propiedad Automotor de los certificados CETA (Certificado de Transferencia de Automotores).
+
+- [Manual para el desarrollador](/ws/WSCTA/WSCTA-ManualParaElDesarrollador.pdf)
+- [README](/ws/WSCTA/README.txt)
+
+**Ejemplos:**
+
+Constatación de Comprobantes (WSCDCV1)
+
+Esta funcionalidad le permitirá verificar en forma dinámica si los comprobantes recibidos se encuentran autorizados por ARCA.
+
+- [Manual para el desarrollador - V. 0.4](/ws/WSCDCV1/WSCDC-manual-desarrollador-v4.pdf)
+- [Manual para el desarrollador - V. 0.3](/ws/WSCDCV1/WSCDC_manual_desarrollador_v.3.pdf)
+- [Manual para el desarrollador - V. 0.2](/ws/WSCDCV1/WSCDC_manual_desarrollador_v.2.pdf)
+- [Manual para el desarrollador - V. 0.1](/ws/WSCDCV1/ManualDelDesarrolladorWSCDCV1.pdf)
+
+Consulta a Padrón Constancia de Inscripción (ws\_sr\_constancia\_inscripcion)
+
+Consulta a Padrón Constancia de Inscripción. El servicio de Consulta de la Constancia de Inscripción de Padrón, antes llamado de Alcance 5 (ws\_sr\_padron\_a5), permite que un organismo externo acceda a los datos de la constancia de un contribuyente registrado en el Padrón de ARCA.
+
+La adhesión de un contribuyente al Régimen de Declaración Jurada Simplificada del Impuesto a las Ganancias, se consigna a través la una caracterización (Caracterización 639). La misma se visualiza con los siguientes datos, establecidos por el art 2 del anexo del Dto 93/26:
+
+- idCaracterizacion: 639
+- descripción Caracterizacion: GANANCIAS SIMPLIFICADA LEY 27.779
+- periodo: el período fiscal desde el cual se ejerció la opción de adhesión
+- fecha Solicitud: la fecha de ejercicio de la opción de adhesión
+
+**¡IMPORTANTE!: A partir del 11/2/2026 el método getPersona\_v2 incorpora un nuevo tag opcional denominado fechaSolicitud dentro de caracterización.**
+
+- [Manual para el desarrollador - V.4.1](/ws/WSCI/manual_ws_sr_ws_constancia_inscripcion.pdf)
+
+Consulta a Padrón Alcance 4 (ws\_sr\_padron\_a4)
+
+Servicio de Consulta de Padrón Alcance 4. El servicio de Consulta de Padrón Alcance 4 permite acceder a los datos de un contribuyente registrado en el Padrón de ARCA. Este WS se puede utilizar para acceder a datos de un contribuyente relacionados con su situación tributaria. Ejemplo: impuestos y regímenes en los que está inscripto.
+
+- [Manual para el desarrollador - v.1.3](/ws/ws_sr_padron_a4/manual_ws_sr_padron_a4_v1.3.pdf)
+- [Datos para pruebas en el ambiente de testing](/ws/ws_sr_padron_a4/datos-prueba-padron-a4.txt)
+
+Consulta a Padrón Alcance 5 (ws\_sr\_padron\_a5)
+
+Servicio de Consulta de Padrón Alcance 5. El servicio de Consulta de Padrón Alcance 5 está deprecado. Es reemplazado por la consulta a Padrón Constancia de Inscripción (ws\_sr\_constancia\_inscripcion).
+
+Consulta a Padrón Alcance 10 (ws\_sr\_padron\_a10)
+
+Servicio de Consulta de Padrón Alcance 10. El servicio de Consulta de Padrón Alcance 10 permite acceder a los datos de un contribuyente registrado en el Padrón de ARCA, en su versión mínima. Este WS se puede utilizar para acceder a datos resumidos de un contribuyente.
+
+- [Manual para el desarrollador - V. 1.2](/ws/ws_sr_padron_a10/manual_ws_sr_padron_a10_v1.2.pdf)
+
+Consulta a Padrón Alcance 13 (ws\_sr\_padron\_a13)
+
+- [Manual para el desarrollador v 1.3](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.3.pdf)
+- [Manual para el desarrollador v 1.2](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.2.pdf)
+- [Manual para el desarrollador v 1.1](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.1.pdf)
+
+Consulta a Padrón Alcance 100 (ws\_sr\_padron\_a100)
+
+Servicio de Consulta de Padrón Alcance 100. El servicio de Consulta de parámetros del Sistema Registral o Padrón, Alcance 100, permite obtener todos los registros de una tabla específica de parámetros de ARCA.
+
+- [Manual para el desarrollador - V. 2.1](/ws/ws_sr_padron_a100/manual_ws_sr_padron_a100_v2.1.pdf)
+
+Consulta a Padrón Nivel 3 y Nivel 10
+
+Los servicios de consulta de Padrón N3 y N10 están deprecados. Se reemplazaron por los Servicios WS A 4 y WS A 10 respectivamente
+
+Consultas de comprobantes sujetos a la Ley de Economía del Conocimiento
+
+Información de facturación electrónica relacionada a sujetos beneficiarios de la Ley de Economía del Conocimiento.
+
+- [Manual del desarrollador](/ws/wscec/manual-wscec.pdf)
+
+Consulta de contribuyentes apócrifos
+
+Manual del desarrollador:
+
+- [Versión 1.09](/ws/wsapoc/ManualUsuario-1.0.9.pdf)
+
+Consulta servicio de deuda proveedores del Estado (sud\_contrataciones)
+
+El servicio de consulta de deuda para contrataciones del estado permite que un organismo externo pueda verificar si el contribuyente que actúa como proveedor del estado tiene o no deuda.
+
+- [Manual para el desarrollador V1.0](/ws/SudContrataciones/manual_sud_contrataciones.pdf)
+
+Consulta servicio de deuda (sud\_restricciones)
+
+El servicio de consulta de deuda por CUIT permite a un organismo externo verificar si el contribuyente tiene o no deuda. El uso de este servicio está reservado a entidades bancarias.
+
+- [Manual para el desarrollador V1.3](/ws/SudRestricciones/manual_sud_restricciones_1.3.pdf)
+- [Manual para el desarrollador V1.2](/ws/SudRestricciones/manual_sud_restricciones_1.2.pdf)
+- [Manual para el desarrollador V1.1](/ws/SudRestricciones/manual_sud_restricciones_1.1.pdf)
+- [Manual para el desarrollador V1.0](/ws/SudRestricciones/manual_sud_restricciones_1.0.pdf)
+
+Consumir Comunicaciones de Ventanilla Electrónica (WSCCOMU)
+
+Permite consultar las comunicaciones que fueron publicadas en el sistema Ventanilla Electrónica.
+
+- [Manual para el desarrollador](/ws/WSCComu/vecuwsconcomunicaciones.pdf)
+
+Creación de VEPs para entidades externas (WSCREATEVEP)
+
+Permite crear un VEP y enviarlo a una entidad de pago. También permite consultar el estado (enviado, pagado, expirado) de un VEP creado mediante este servicio.
+
+- [Manual para el desarrollador](/ws/WSCREATEVEP/ManualParaElDesarrolladorDelCreateVEPwebService.pdf)
+
+JAZA Service
+
+- [Manual para el desarrollador V. 1.0.5](/juegosdeazar/documentos/Web_Service_JAZA_20240122_v1.0.5.pdf)
+- [Manual para el desarrollador V. 1.0.4](/juegosdeazar/documentos/WebServiceJAZA.pdf)
+
+Lechería - Liquidación Mensual Única (WSLUM)
+
+- [Manual para el desarrollador V1.4](/ws/wslum/manual_wslum1.4.pdf)
+- [Manual para el desarrollador V1.3](/ws/wslum/manual_wslum1.3.pdf)
+
+Liquidación de Caña de Azúcar (WSLCA)
+
+- [Manual para el desarrollador](/ws/WSLCA/manual_wslca.pdf)
+
+Liquidación de Tabaco Verde (WSLTV)
+
+- [Manual para el desarrollador V 1.4](/ws/tabaco/manual-wsltv-1.4.pdf)
+- [Manual para el desarrollador V 1.3](/ws/tabaco/manual_wsltv_1.3.pdf)
+- [Manual para el desarrollador V 1.2](/ws/tabaco/manual_wsltv_1.2.pdf)
+- [Manual para el desarrollador V 1.1](/ws/tabaco/manual_wsltv_1.1.pdf)
+- [Manual para el desarrollador V 1.0](/ws/tabaco/manual_wsltv_1.0.pdf)
+
+Liquidación Primaria de Granos (WSLPG)
+
+- [Manual para el desarrollador V. 1.24](/ws/WSLiquiGranos/manual_wslpg_1.24.pdf)
+- [Manual para el desarrollador V. 1.23](/ws/WSLiquiGranos/manual_wslpg_1.23.pdf)
+- [Manual para el desarrollador V. 1.22](/ws/WSLiquiGranos/manual_wslpg_1.22.pdf)
+- [Manual para el desarrollador V. 1.21](/ws/WSLiquiGranos/manual_wslpg_1.21.pdf)
+- [Manual para el desarrollador V. 1.20](/ws/WSLiquiGranos/manual-wslpg-120.pdf)
+- [Manual para el desarrollador V. 1.19](/ws/WSLiquiGranos/manual_wslpg_1.19.pdf)
+- [Manual para el desarrollador V. 1.18](/ws/WSLiquiGranos/manual_wslpg_1.18.pdf)
+- [Manual para el desarrollador V. 1.17](/ws/WSLiquiGranos/manual_wslpg_1.17.pdf)
+- [Manual para el desarrollador V. 1.16](/ws/WSLiquiGranos/manual_wslpg_1.16.pdf)
+- [Manual para el desarrollador V. 1.15](/ws/WSLiquiGranos/manual_wslpg_1.15.pdf)
+- [Manual para el desarrollador V. 1.14](/ws/WSLiquiGranos/manual_wslpg_1.14.pdf)
+- [Manual para el desarrollador V. 1.13](/ws/WSLiquiGranos/manual_wslpg_1.13.pdf)
+- [Manual para el desarrollador V. 1.12](/ws/WSLiquiGranos/ManualrWSLPGV112.pdf)
+- [Manual para el desarrollador V. 1.11](/ws/WSLiquiGranos/ManualrWSLPGV111.pdf)
+- [Manual para el desarrollador V. 1.10](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV110.pdf)
+- [Manual para el desarrollador V. 1.9](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV19.pdf)
+- [Manual para el desarrollador V. 1.8](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV18.pdf)
+- [Manual para el desarrollador V. 1.7](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV17.pdf)
+- [Manual para el desarrollador V. 1.6](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV16.pdf)
+- [Manual para el desarrollador V. 1.5](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV15.pdf)
+- [Manual para el desarrollador V. 1.4](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV14.pdf)
+- [Manual para el desarrollador V. 1.3](/ws/WSLiquiGranos/ManualDelDesarrolladoWSLPGV13.pdf)
+- [Manual para el desarrollador V. 1.2](/ws/WSLiquiGranos/ManualDelDesarrolladoWSLPGV12.pdf)
+- [Manual para el desarrollador V. 1.1](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV11.pdf)
+- [Manual para el desarrollador V. 1](/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV1.pdf)
+
+**Ejemplos:**
+
+Liquidación Sector Pecuario (WSLSP)
+
+- [README](/ws/WSLSP/README.txt)
+- [Manual para el desarrollador V.2.0.4.](/ws/WSLSP/manual-wslsp-2.0.4.pdf)
+- [Manual para el desarrollador V.2.0.3](/ws/WSLSP/manual_wslsp_2.0.3.pdf)
+- [Manual para el desarrollador V 2.0.0](/ws/WSLSP/manual-wslsp-2.0.0.pdf)
+- [Manual para el desarrollador V. 1.7.1](/ws/WSLSP/manual_wslsp_1.7.1.pdf)
+- [Manual para el desarrollador V. 1.7](/ws/WSLSP/manual_wslsp_1.7.pdf)
+- [Manual para el desarrollador V. 1.6](/ws/WSLSP/manual_wslsp_1.6.pdf)
+- [Manual para el desarrollador V. 1.5](/ws/WSLSP/manual_wslsp_1.5.pdf)
+- [Manual para el desarrollador V. 1.4.1](/ws/WSLSP/manual_wslsp_1.4.1.pdf)
+- [Manual para el desarrollador V. 1.4](/ws/WSLSP/manual_wslsp_1.4.pdf)
+- [Manual para el desarrollador V. 1.3](/ws/WSLSP/manual_wslsp_1.3.pdf)
+- [Manual para el desarrollador V. 1.2](/ws/WSLSP/manual_wslsp_1.2.pdf)
+- [Manual para el desarrollador V. 1.1](/ws/WSLSP/manual_wslsp_1.1.pdf)
+- [Manual para el desarrollador V. 1.0](/ws/WSLSP/manual_wslsp_1.0.pdf)
+
+Operación de Seguros de Caución (WSSEG)
+
+Permite la autorización de comprobantes (cabecera y montos globales) para Facturación Electrónica para las empresas que emiten Seguros de Caución según RG 2668.
+
+- [Guía Adicional Para El Programador](/ws/WSSEG/WSSEG-GuiaAdicionalParaElProgramador.pdf)
+- [Manual para el desarrollador](/ws/documentacion/manuales/WSSEG-ManualParaElDesarrollador_ARCA.pdf)
+- [F 136 - Motivos](/ws/WSSEG/F136_MOTIVOS.txt)
+- [README](/ws/WSSEG/README.txt)
+
+**Ejemplos:**
+
+Presentación de DDJJ
+
+Permite automatizar la presentación de DDJJ
+
+- [Manual para el desarrollador](/ws/wsddjj/WSPresentaciondeDDJJManualparaelDesarrollador.pdf)
+
+Régimen Percepción IVA
+
+Permite la consulta de la situación fiscal de los sujetos pasibles del Régimen especial de ingreso de IVA establecido en la Resolución General N°5.319/2023, por parte de los responsables obligados a actuar como agentes de percepción - titulares y/o administradores de “plataformas digitales” definidos en la citada resolución.
+
+- [Manual para el desarrollador](manuales/manualdesarrolladorWSRGIVA.pdf)
+- [Resolución General N° 5319/23](http://biblioteca.afip.gob.ar/dcp/REAG01005319_2023_01_19)
+
+**Ejemplos:**
+
+Régimen Tabacalero (WSTABACO)
+
+- [Manual para el desarrollador V 1.0](/ws/WSTABACO/Manual_Desarrollador_WSTABACO_v1_0.pdf)
+
+Registro de Beneficios Fiscales en el Impuesto sobre los Créditos y Débitos en Cuentas Bancarias y Otras (WSICDB)
+
+- [Manual para el Desarrollador V1.2 (21/12/2016)](/ws/registroICBD/manual_wsicdb1.2.pdf)
+- [Manual para el Desarrollador V1.1 (16/06/2016)](/ws/registroICBD/manual_wsicdb1.1.pdf)
+
+Remito de harinas de trigo y los subproductos derivados de la molienda de trigo
+
+- [Manual para el desarrollador v2.9](/ws/remitoHTSDMT/Manual_Desarrollador_WSREMHARINA_v2.9.pdf)
+
+Remito Electrónico para Azúcar, Alcohol y Subproductos
+
+- [Manual para el desarrollador 2.0.9](../remitoElecAzucar/Manual-DesarrolladorWSREMAZUCAR v2_0_9.pdf)
+- [Manual para el desarrollador 2.0.8](../remitoElecAzucar/Manual-DesarrolladorWSREMAZUCAR-v2_0_8.pdf)
+- [Manual para el desarrollador 2.0.7](../remitoElecAzucar/Manual-DesarrolladorWSREMAZUCAR-v2_0_7.pdf)
+- [Manual para el desarrollador 2.0.6](../remitoElecAzucar/Manual-DesarrolladorWSREMAZUCAR-v2_0_6.pdf)
+- [Manual para el desarrollador 2.0.4](../remitoElecAzucar/Manual-Desarrollador-WSREMAZUCAR-v2.0.4.pdf)
+- [Manual para el desarrollador 2.0.3 (No vigente)](../remitoElecAzucar/Manual-Desarrollador-WSREMAZUCAR-2.0.3.pdf)
+- [Manual para el desarrollador 2.0.2 (No vigente)](../remitoElecAzucar/Manual-DesarrolladorWSREMAZUCAR-v2_0_2.pdf)
+- [Manual para el desarrollador (No vigente)](../remitoElecAzucar/Manual_Desarrollador_WSREMAZUCAR.pdf)
+
+Remito Electrónico Cárnico
+
+- [Manual para el Desarrollador v3.6](../remitoElecCarnico/Manual_Desarrollador_WSREMCARNE_v3_6.pdf)
+- [Manual para el Desarrollador v3.5](../remitoElecCarnico/Manual_Desarrollador_WSREMCARNE_v3_5.pdf)
+- [Manual para el Desarrollador V3.4](../remitoElecCarnico/Manual-Desarrollador-WSREMCARNE-v3-4.pdf)
+- [Manual para el Desarrollador V3.2](../remitoElecCarnico/Manual_Desarrollador_WSREMCARNE v3_2.pdf)
+- [Manual para el Desarrollador V3.1](../remitoElecCarnico/Manual_Desarrollador_WSREMCARNE_v3_1.pdf)
+
+Sistema Integral de Retenciones Electrónicas
+
+- [Manual para el Desarrollador](../sistemaIntegralRetenElect/SOAP-SIRE-IVA-Manualparaeldesarrollador_V1_0_0.pdf)
+
+TRABAJO\_F931
+
+Permite consultar información de las declaraciones furadas F931 registradas en la base de datos de Seguridad Social de ARCA. Permite acceder a la siguiente información:
+
+1. Consultas de presentación para una relación Empleador / Empleado / Período Fiscal. El webservice busca la declaración jurada del período (de no encontrar presentación, se busca hasta 3 períodos anteriores) e informa:
+
+   - PERIODO FISCAL de la DJ
+   - REMUNERACIÓN TOTAL declarada para el empleado en la DJ
+   - REMUNERACIÓN IMPONIBLE DE APORTES DE SEGURIDAD SOCIAL declarada para el empleado en la DJ
+   - REMUNERACIÓN IMPONIBLE DE CONTRIBUCIONES DE SEGURIDAD SOCIAL declarada para el empleado en la DJ
+
+   **Nota: el período fiscal solicitado debe estar dentro de los últimos 12 meses.**
+2. Consultas de presentación para una relación Empleador / Período. El webservice busca la declaración jurada del período (de no encontrar presentación, se busca hasta 3 períodos anteriores) e informa:
+
+   - REMUNERACIÓN TOTAL declarada en la DJ determinativa
+   - REMUNERACIÓN IMPONIBLE DE APORTES DE SEGURIDAD SOCIAL declarada en la DJ determinativa.
+   - CANTIDAD DE EMPLEADOS declarados en la DJ
+      Nota: el período fiscal solicitado debe estar dentro de los últimos 12 meses.
+
+---
+
+- [Manual para el desarrollador](/ws/TRABAJO_F931/TrabajoF931-ManualParaElDesarrollador.pdf)
+- [README](/ws/TRABAJO_F931/README.txt)
+- [Casos de prueba](/ws/TRABAJO_F931/WS_SIPA-Casosdeprueba.xls)
+
+**Ejemplos:**
+
+---
+
+### Aduana
+
+Actualización / Consulta PEMA
+
+Permite a los prestadores PEMA actualizar los dispositivos DES para traslados, tránsito como así también realizar la consulta de los mismos.
+
+Tipo de agente aduanero habilitado para su uso: OTEN
+
+- [Manual para el desarrollador](/ws/WDIAUTIDES/ManualDesarrollador-WdiaUtiDEs.pdf)
+- [README](/ws/WDEPMOVIMIENTOS/README.txt)
+- [Resolución General N° 2889/10](http://biblioteca.afip.gob.ar/dcp/REAG01002889_2010_08_11)
+
+Aprobar y Denegar Despachos INV - vitivinicultura (WGESINV)
+
+Permite al Instituto Nacional de Vitivinicultura consultar, aprobar o denegar despachos que se encuentren bajo el régimen de vitivinicultura.
+
+Tipo de agente aduanero habilitado para su uso: OTEN
+
+- [Manual para el desarrollador](/ws/WGESINV/wgesinv-ManualParaElDesarrollador.pdf)
+- [README](/ws/WGESINV/README.txt)
+- [Resolución General Conjunta N°3150/11](http://biblioteca.afip.gob.ar/dcp/REAG01003150_2011_07_08)
+
+Consulta de Tablas de Referencia
+
+Permite visualizar las tablas de referencia MARIA. A ser reemplazado por el wGesTabRef.
+
+Tipo de agente aduanero habilitado para su uso: DEPO - DESP - IEOC - IMEX - OTEN - PSAD - SCIN - SICO - USUD
+
+- [Manual para el desarrollador - V. 1.1](/ws/documentos/Manual_del_Desarrollador_wgestabref.pdf)
+- [README](/ws/documentos/README.txt)
+
+Consultas Depositario Fiel
+
+Permite realizar consultas de estados de los legajos y además lista todos los legajos que se encuentran en estado ENDO para un determinado PSAD.
+
+Tipo de agente aduanero habilitado para su uso: PSAD - DESP
+
+- [Manual para el desarrollador - V. 1.7](/ws/documentos/Manual-Desarrollador-wConsDepFiel.pdf)
+- [README](/ws/documentos/README_ConsDepFiel.txt)
+- [Resolución General N° 3069/11](http://biblioteca.afip.gob.ar/dcp/REAG01003069_2011_03_18)
+
+Control de stock en tiendas libres
+
+Es de uso por los permisionarios de depósitos para informar el detalle y las distintas acciones sobre mercadería de origen extranjero o nacional en el depósito.
+
+Tipo de agente aduanero habilitado para su uso: TILI
+
+- [Manual para del desarrollador](/ws/documentos/ManualDesa-wgestiendaslibres.pdf)
+
+Coraza Electrónica de Seguridad (WSCES)
+
+Tipo de agente aduanero habilitado para su uso: ISTA
+
+- [Manual para el desarrollador](/ws/WSCES/ManualDesa-wgesprecintosdepfis.pdf)
+- [README](/ws/WSCES/README.txt)
+- [Resolución General N° 3871/16 – Derogada](http://biblioteca.afip.gob.ar/dcp/REAG01003871_2016_04_29)
+
+Digitalización de Depositario Fiel
+
+Permite digitalizar legajos a los PSAD y Despachantes.
+
+Tipo de agente aduanero habilitado para su uso: PSAD - DESP
+
+- [Manual para el desarrollador](/ws/documentos/ManualDesaDigDepFiel.pdf)
+- [README](/ws/documentos/READMEDF.txt)
+- [Resolución General N° 3069/11](http://biblioteca.afip.gob.ar/dcp/REAG01003069_2011_03_18)
+
+Ejemplo del componente acordeón #2
+
+Lorem ipsum dolor sit amet...
+
+Grandes Operadores
+
+Domiciliarias – Salidas GOP
+
+WebService Funcional WutiGOPDeclaraciones. Nuevo esquema.
+
+- [Manual para el usuario](/USAduaneros/documentos/WutiGOPDeclaraciones_NuevoEsquema_Manual-Usuario_.pdf)
+
+Movimientos de Ingreso/Egreso para Terminales/Depositarios
+
+Posibilita realizar salidas de zona primaria de importación general, salida directo a plaza, salida zona primaria de exportación, salida de contenedores.
+
+Tipo de agente aduanero habilitado para su uso: DEPO
+
+- [Manual para el desarrollador](/ws/WDEPMOVIMIENTOS/wdepmovimientos-ManualParaElDesarrollador.pdf)
+- [README](/ws/WDEPMOVIMIENTOS/README.txt)
+- [Resolución General N° 630/94](https://biblioteca.afip.gob.ar/search/query/norma.aspx?p=t:REA|n:630|o:5|a:1994|f:15/03/1994)
+
+Recepción de Eventos de Entrada y Salida de Vehículos
+
+Posibilita la recepción de información de Chile relativa al Ingreso y egreso de vehículos (argentinos o correspondientes a dicho país) y consulta de los datos de egreso de un vehículo argentino.
+
+Tipo de agente aduanero habilitado para su uso: OTEN
+
+- [Manual para el desarrollador](/ws/wEnysa/wEnysa-ManualDesarrollador.pdf)
+- [README](/ws/wEnysa/README.txt)
+- [Resolución General N° 2623/09](http://biblioteca.afip.gob.ar/dcp/REAG01002623_2009_06_08)
+
+Seguimiento Vehicular (WSSV)
+
+Usado por los prestadores OLS para informar las posiciones geográficas y estado de los Precintos Electrónicos de Monitoreo Aduanero instalados en los contenedores en tránsito.
+
+- [Manual para el desarrollador](/ws/WSSV/WSSV-ManualParaElDesarrollador.pdf)
+- [Manual de generación de rutas con Google Earth](/ws/WSSV/ManualDeGeneracionDeRutasConGoogleEarth.pdf)
+- [Ruta de calibración](/ws/WSSV/RutaDeCalibracion.pdf)
+- [Agregar datos de rutas](/ws/WSSV/AgregarDatosDeRutas.pdf)
+- [README](/ws/WSSV/README.txt)
+
+**Ejemplos:**
