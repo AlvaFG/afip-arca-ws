@@ -38,13 +38,14 @@ class DocsScraper:
         )
         self.delay: float = float(config.get("delay_seconds", 0.6))
         self.max_pages: int = int(config.get("max_pages", 1000))
+        self.start_urls: list[str] = config.get("start_urls") or [self.base_url + "/"]
 
         self.visited: set[str] = set()
         self.client = httpx.Client(
             headers={
                 "User-Agent": (
                     "Mozilla/5.0 (compatible; DocsScraper/1.0; "
-                    "+https://github.com/AlvaFG/afip-ws-docs)"
+                    "+https://github.com/AlvaFG/afip-arca-ws)"
                 ),
                 "Accept": "text/html,application/xhtml+xml",
                 "Accept-Language": "es-AR,es;q=0.9",
@@ -135,7 +136,7 @@ class DocsScraper:
 
     # ---------- main loop ----------
     def scrape(self, start_urls: list[str] | None = None) -> dict:
-        queue: list[str] = list(start_urls) if start_urls else [self.base_url + "/"]
+        queue: list[str] = list(start_urls) if start_urls else list(self.start_urls)
         stats = {"pages": 0, "errors": 0, "skipped": 0}
         index_entries: list[tuple[str, str]] = []
 

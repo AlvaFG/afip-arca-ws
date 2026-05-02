@@ -27,10 +27,9 @@ exclude_patterns:
   - "\\?print="
   - "javascript:"
 
-# Optional starting points (overrides base_url crawl roots).
-# Leave commented to crawl from base_url only.
-# start_urls:
-#   - "https://www.afip.gob.ar/ws/programadores/"
-#   - "https://www.afip.gob.ar/ws/documentacion/"
-#   - "https://www.afip.gob.ar/ws/aplicativos/"
-#   - "https://www.afip.gob.ar/ws/menu-ayuda/"
+start_urls:
+  - "https://www.afip.gob.ar/ws/"
+  - "https://www.afip.gob.ar/ws/programadores/"
+  - "https://www.afip.gob.ar/ws/documentacion/"
+  - "https://www.afip.gob.ar/ws/aplicativos/"
+  - "https://www.afip.gob.ar/ws/menu-ayuda/"
