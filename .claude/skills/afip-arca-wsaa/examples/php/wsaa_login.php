@@ -26,25 +26,47 @@ XML;
 }
 
 function sign_cms(string $tra, string $cert_path, string $key_path): string {
-    $tmp_in = tempnam(sys_get_temp_dir(), 'tra_');
+    // openssl_pkcs7_sign with flags=0 produces a signed S/MIME message:
+    //
+    //   MIME-Version: 1.0
+    //   Content-Disposition: attachment; filename="smime.p7m"
+    //   Content-Type: application/x-pkcs7-mime; smime-type=signed-data; ...
+    //   Content-Transfer-Encoding: base64
+    //
+    //   <base64 of CMS DER bytes>
+    //
+    // We split on the blank line separator (handling both LF and CRLF line
+    // endings — OpenSSL builds vary) and strip whitespace from the body.
+    // The result is the base64 of the DER CMS, ready to send to AFIP.
+    $tmp_in  = tempnam(sys_get_temp_dir(), 'tra_');
     $tmp_out = tempnam(sys_get_temp_dir(), 'cms_');
     file_put_contents($tmp_in, $tra);
+
+    // Flag 0 = neither DETACHED nor BINARY: produces a signed S/MIME message
+    // with the content embedded. Passing the constant explicitly is clearer
+    // than the historical idiom `!PKCS7_DETACHED` (which evaluates to 0 by
+    // coincidence in PHP boolean→int coercion).
     $ok = openssl_pkcs7_sign(
         $tmp_in, $tmp_out,
         'file://' . $cert_path,
         ['file://' . $key_path, ''],
         [],
-        !PKCS7_DETACHED
+        0
     );
     if (!$ok) {
+        unlink($tmp_in);
+        @unlink($tmp_out);
         throw new RuntimeException('openssl_pkcs7_sign failed: ' . openssl_error_string());
     }
     $signed = file_get_contents($tmp_out);
     unlink($tmp_in);
     unlink($tmp_out);
-    // Strip MIME headers to keep the CMS bytes only, then base64
-    [, $body] = explode("\n\n", $signed, 2);
-    return preg_replace('/\s+/', '', $body);
+
+    $parts = preg_split('/\r?\n\r?\n/', $signed, 2);
+    if (count($parts) !== 2) {
+        throw new RuntimeException('Unexpected S/MIME output: missing header/body separator');
+    }
+    return preg_replace('/\s+/', '', $parts[1]);
 }
 
 function parse_args(): array {

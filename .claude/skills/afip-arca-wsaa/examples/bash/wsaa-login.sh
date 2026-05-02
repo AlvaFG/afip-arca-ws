@@ -18,8 +18,16 @@ WORKDIR=$(mktemp -d)
 trap 'rm -rf "$WORKDIR"' EXIT
 
 NOW=$(date +%s)
-GEN=$(date -u -d "@$((NOW - 60))" +%Y-%m-%dT%H:%M:%S 2>/dev/null || gdate -u -d "@$((NOW - 60))" +%Y-%m-%dT%H:%M:%S)
-EXP=$(date -u -d "@$((NOW + 600))" +%Y-%m-%dT%H:%M:%S 2>/dev/null || gdate -u -d "@$((NOW + 600))" +%Y-%m-%dT%H:%M:%S)
+# AFIP requires ISO 8601 with explicit timezone. Shift epoch back 3h then format
+# as UTC and append "-03:00" — same approach as the PHP/Node examples.
+ART_OFFSET=10800
+fmt_art() {
+  local t="$1"
+  date -u -d "@$((t - ART_OFFSET))" +%Y-%m-%dT%H:%M:%S 2>/dev/null \
+    || gdate -u -d "@$((t - ART_OFFSET))" +%Y-%m-%dT%H:%M:%S
+}
+GEN="$(fmt_art "$((NOW - 60))")-03:00"
+EXP="$(fmt_art "$((NOW + 600))")-03:00"
 
 cat > "$WORKDIR/tra.xml" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
