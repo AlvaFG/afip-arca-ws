@@ -1,0 +1,36 @@
+# Configuration for AFIP/ARCA Web Services docs scraper.
+# Tweak selectors here if the site layout changes.
+
+base_url: "https://www.afip.gob.ar/ws"
+allowed_prefix: "https://www.afip.gob.ar/ws"
+output_dir: "../docs"
+
+# Main content container — AFIP uses a generic <main>; we fall back to body
+content_selector: "main"
+
+# Polite crawl
+delay_seconds: 0.6
+max_pages: 500
+
+# What URLs count as docs
+include_extensions:
+  - ".asp"
+  - ".html"
+  - ".htm"
+  - "/"
+
+# Skip these patterns (regex applied to absolute URL)
+exclude_patterns:
+  - "\\.(pdf|zip|exe|jpg|jpeg|png|gif|svg|css|js)$"
+  - "/manifest\\."
+  - "/robots\\."
+  - "\\?print="
+  - "javascript:"
+
+# Optional starting points (overrides base_url crawl roots).
+# Leave commented to crawl from base_url only.
+# start_urls:
+#   - "https://www.afip.gob.ar/ws/programadores/"
+#   - "https://www.afip.gob.ar/ws/documentacion/"
+#   - "https://www.afip.gob.ar/ws/aplicativos/"
+#   - "https://www.afip.gob.ar/ws/menu-ayuda/"
