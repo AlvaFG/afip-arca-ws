@@ -69,6 +69,8 @@ class DocsScraper:
             return None
 
     # ---------- link discovery ----------
+    ASSET_EXTENSIONS = (".wsdl", ".xsd", ".pdf", ".zip")
+
     def is_internal_doc_link(self, url: str) -> bool:
         if not url.startswith(self.allowed_prefix):
             return False
@@ -77,17 +79,25 @@ class DocsScraper:
         path = urlparse(url).path.lower()
         return path.endswith(self.include_extensions) or path.endswith("/")
 
-    def discover_links(self, html: str, current_url: str) -> list[str]:
+    def is_asset_link(self, url: str) -> bool:
+        if not url.startswith(self.allowed_prefix):
+            return False
+        return urlparse(url).path.lower().endswith(self.ASSET_EXTENSIONS)
+
+    def discover_links(self, html: str, current_url: str) -> tuple[list[str], list[str]]:
         tree = HTMLParser(html)
-        links: list[str] = []
+        docs: list[str] = []
+        assets: list[str] = []
         for node in tree.css("a[href]"):
             href = node.attributes.get("href", "").strip()
             if not href or href.startswith(("#", "mailto:", "javascript:", "tel:")):
                 continue
             absolute = urljoin(current_url, href).split("#")[0]
-            if self.is_internal_doc_link(absolute) and absolute not in links:
-                links.append(absolute)
-        return links
+            if self.is_asset_link(absolute) and absolute not in assets:
+                assets.append(absolute)
+            elif self.is_internal_doc_link(absolute) and absolute not in docs:
+                docs.append(absolute)
+        return docs, assets
 
     # ---------- content extraction ----------
     def extract_content(self, html: str) -> tuple[str, str]:
@@ -139,6 +149,7 @@ class DocsScraper:
         queue: list[str] = list(start_urls) if start_urls else list(self.start_urls)
         stats = {"pages": 0, "errors": 0, "skipped": 0}
         index_entries: list[tuple[str, str]] = []
+        discovered_assets: set[str] = set()
 
         while queue and stats["pages"] < self.max_pages:
             url = queue.pop(0)
@@ -175,13 +186,16 @@ class DocsScraper:
                 stats["pages"] += 1
                 print(f"  ✅ {rel}")
 
-            for link in self.discover_links(html, url):
+            doc_links, asset_links = self.discover_links(html, url)
+            for link in doc_links:
                 if link not in self.visited:
                     queue.append(link)
+            discovered_assets.update(asset_links)
 
             time.sleep(self.delay)
 
         self._write_index(index_entries)
+        self._write_assets_index(sorted(discovered_assets))
         self._write_meta(index_entries)
         return stats
 
@@ -203,6 +217,21 @@ class DocsScraper:
         # write to README.md (not index.md) to avoid clashing with a scraped page
         # whose URL maps to docs/index.md
         (self.output_dir / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    def _write_assets_index(self, assets: list[str]):
+        if not assets:
+            return
+        lines = [
+            "# AFIP/ARCA Web Services — Asset Index",
+            "",
+            "_Auto-generated. Lists downloadable WSDL/XSD/PDF/ZIP files referenced by the docs._",
+            "",
+        ]
+        for url in assets:
+            lines.append(f"- <{url}>")
+        (self.output_dir / "_assets-index.md").write_text(
+            "\n".join(lines) + "\n", encoding="utf-8"
+        )
 
     def _write_meta(self, entries: list[tuple[str, str]]):
         import json
