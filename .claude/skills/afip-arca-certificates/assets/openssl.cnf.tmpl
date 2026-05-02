@@ -1,0 +1,13 @@
+# Template for AFIP cert CSR. Fill the placeholders, then:
+#   openssl req -new -config openssl.cnf -keyout private.key -out request.csr
+[ req ]
+default_bits        = 2048
+default_md          = sha256
+distinguished_name  = req_dn
+prompt              = no
+
+[ req_dn ]
+C  = AR
+O  = {{ORGANIZACION}}
+CN = {{ALIAS}}
+serialNumber = CUIT {{CUIT}}
