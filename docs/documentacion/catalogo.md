@@ -35,7 +35,7 @@ Carta de Porte Electrónica (WSCPE)
 
 Manual del desarrollador:
 
-- [Versión 2.2.0](/ws/documentos/manual-wscpe.pdf)
+- [Versión 2.2.1](/ws/documentos/manual-wscpe.pdf)
 
 Certificados DNRPA (WSCTA)
 
@@ -89,9 +89,7 @@ Servicio de Consulta de Padrón Alcance 10. El servicio de Consulta de Padrón A
 
 Consulta a Padrón Alcance 13 (ws\_sr\_padron\_a13)
 
-- [Manual para el desarrollador v 1.3](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.3.pdf)
-- [Manual para el desarrollador v 1.2](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.2.pdf)
-- [Manual para el desarrollador v 1.1](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.1.pdf)
+- [Manual para el desarrollador v 1.4](/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.4.pdf)
 
 Consulta a Padrón Alcance 100 (ws\_sr\_padron\_a100)
 
@@ -138,9 +136,16 @@ Permite consultar las comunicaciones que fueron publicadas en el sistema Ventani
 
 Creación de VEPs para entidades externas (WSCREATEVEP)
 
-Permite crear un VEP y enviarlo a una entidad de pago. También permite consultar el estado (enviado, pagado, expirado) de un VEP creado mediante este servicio.
+DEPRECADO. Reemplazado por setiws-pago-api
 
 - [Manual para el desarrollador](/ws/WSCREATEVEP/ManualParaElDesarrolladorDelCreateVEPwebService.pdf)
+
+Creación de VEPs para organismos externos (SETIWS-PAGO-API)
+
+API de pagos para que otros organismos puedan crear VEPs, enviarlos a las entidades de pago y consultarlos
+
+- [Manual para el desarrollador](/ws/SETIWS-PAGO-API/Manual_para_el_desarrollador_setiws-pago-api.pdf)
+- [Anexo vep F. 3012](/ws/SETIWS-PAGO-API/Manual_para_el_desarrollador_setiws-pago-api-anexo-F3012.pdf)
 
 JAZA Service
 
@@ -197,6 +202,8 @@ Liquidación Primaria de Granos (WSLPG)
 Liquidación Sector Pecuario (WSLSP)
 
 - [README](/ws/WSLSP/README.txt)
+- [Manual para el desarrollador V.2.0.6.](/ws/WSLSP/manual_wslsp_2.0.6.pdf)
+- [Manual para el desarrollador V.2.0.5.](/ws/WSLSP/manual_wslsp_2.0.5.pdf)
 - [Manual para el desarrollador V.2.0.4.](/ws/WSLSP/manual-wslsp-2.0.4.pdf)
 - [Manual para el desarrollador V.2.0.3](/ws/WSLSP/manual_wslsp_2.0.3.pdf)
 - [Manual para el desarrollador V 2.0.0](/ws/WSLSP/manual-wslsp-2.0.0.pdf)
@@ -210,6 +217,12 @@ Liquidación Sector Pecuario (WSLSP)
 - [Manual para el desarrollador V. 1.2](/ws/WSLSP/manual_wslsp_1.2.pdf)
 - [Manual para el desarrollador V. 1.1](/ws/WSLSP/manual_wslsp_1.1.pdf)
 - [Manual para el desarrollador V. 1.0](/ws/WSLSP/manual_wslsp_1.0.pdf)
+
+Mi Argentina WS
+
+Servicio desarrollado para la aplicación móvil “MiArgentina”, que permite incorporar datos relacionados con la vida laboral del trabajador en esa aplicación.
+
+- [Manual para el desarrollador](/ws/Mi-argentina/MiArgentina-Webservice-Manual-del-Desarrollador-v2.2.pdf)
 
 Operación de Seguros de Caución (WSSEG)
 

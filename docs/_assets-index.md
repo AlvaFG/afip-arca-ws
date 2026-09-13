@@ -2,6 +2,9 @@
 
 _Auto-generated. Lists downloadable WSDL/XSD/PDF/ZIP files referenced by the docs._
 
+- <https://www.afip.gob.ar/ws/Mi-argentina/MiArgentina-Webservice-Manual-del-Desarrollador-v2.2.pdf>
+- <https://www.afip.gob.ar/ws/SETIWS-PAGO-API/Manual_para_el_desarrollador_setiws-pago-api-anexo-F3012.pdf>
+- <https://www.afip.gob.ar/ws/SETIWS-PAGO-API/Manual_para_el_desarrollador_setiws-pago-api.pdf>
 - <https://www.afip.gob.ar/ws/SudContrataciones/manual_sud_contrataciones.pdf>
 - <https://www.afip.gob.ar/ws/SudRestricciones/manual_sud_restricciones_1.0.pdf>
 - <https://www.afip.gob.ar/ws/SudRestricciones/manual_sud_restricciones_1.1.pdf>
@@ -55,6 +58,8 @@ _Auto-generated. Lists downloadable WSDL/XSD/PDF/ZIP files referenced by the doc
 - <https://www.afip.gob.ar/ws/WSLSP/manual_wslsp_1.7.1.pdf>
 - <https://www.afip.gob.ar/ws/WSLSP/manual_wslsp_1.7.pdf>
 - <https://www.afip.gob.ar/ws/WSLSP/manual_wslsp_2.0.3.pdf>
+- <https://www.afip.gob.ar/ws/WSLSP/manual_wslsp_2.0.5.pdf>
+- <https://www.afip.gob.ar/ws/WSLSP/manual_wslsp_2.0.6.pdf>
 - <https://www.afip.gob.ar/ws/WSLiquiGranos/ManualDelDesarrolladoWSLPGV12.pdf>
 - <https://www.afip.gob.ar/ws/WSLiquiGranos/ManualDelDesarrolladoWSLPGV13.pdf>
 - <https://www.afip.gob.ar/ws/WSLiquiGranos/ManualDelDesarrolladorWSLPGV1.pdf>
@@ -96,8 +101,7 @@ _Auto-generated. Lists downloadable WSDL/XSD/PDF/ZIP files referenced by the doc
 - <https://www.afip.gob.ar/ws/documentacion/manuales/WSBFEV1-ManualParaElDesarrollador_ARCA_V3_0.pdf>
 - <https://www.afip.gob.ar/ws/documentacion/manuales/WSFEX-Manualparaeldesarrollador_V3.1.1_ARCA.pdf>
 - <https://www.afip.gob.ar/ws/documentacion/manuales/WSSEG-ManualParaElDesarrollador_ARCA.pdf>
-- <https://www.afip.gob.ar/ws/documentacion/manuales/Web-Service-MTXCA-v25.pdf>
-- <https://www.afip.gob.ar/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG-v4-1.pdf>
+- <https://www.afip.gob.ar/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG.pdf>
 - <https://www.afip.gob.ar/ws/documentacion/manuales/manualdesarrolladorWSRGIVA.pdf>
 - <https://www.afip.gob.ar/ws/documentos/Manual-Desarrollador-wConsDepFiel.pdf>
 - <https://www.afip.gob.ar/ws/documentos/ManualDesa-wgestiendaslibres.pdf>
@@ -127,9 +131,7 @@ _Auto-generated. Lists downloadable WSDL/XSD/PDF/ZIP files referenced by the doc
 - <https://www.afip.gob.ar/ws/tabaco/manual_wsltv_1.2.pdf>
 - <https://www.afip.gob.ar/ws/tabaco/manual_wsltv_1.3.pdf>
 - <https://www.afip.gob.ar/ws/wEnysa/wEnysa-ManualDesarrollador.pdf>
-- <https://www.afip.gob.ar/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.1.pdf>
-- <https://www.afip.gob.ar/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.2.pdf>
-- <https://www.afip.gob.ar/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.3.pdf>
+- <https://www.afip.gob.ar/ws/ws-padron-a13/manual-ws-sr-padron-a13-v1.4.pdf>
 - <https://www.afip.gob.ar/ws/ws_sr_padron_a10/manual_ws_sr_padron_a10_v1.2.pdf>
 - <https://www.afip.gob.ar/ws/ws_sr_padron_a100/manual_ws_sr_padron_a100_v2.1.pdf>
 - <https://www.afip.gob.ar/ws/ws_sr_padron_a4/manual_ws_sr_padron_a4_v1.3.pdf>
