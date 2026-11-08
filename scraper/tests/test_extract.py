@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import pytest
-
 from scrape import DocsScraper
 
 FIXTURE = Path(__file__).parent / "fixtures" / "sample_page.html"

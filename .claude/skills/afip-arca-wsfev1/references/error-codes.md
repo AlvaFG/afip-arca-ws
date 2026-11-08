@@ -5,7 +5,10 @@
 | 600 | Token inválido | El TA está expirado o el formato no es el correcto | Obtener un TA nuevo (puede haber expirado el cache) |
 | 601 | Sign inválido | Mismatch en el sign del TA | Re-obtener TA; verificar que no se haya modificado en transit |
 | 1001 | El CUIT no se encuentra autorizado | El CUIT del Auth no está habilitado para WSFEv1 | Autorizar en "Administrador de Relaciones" → WSFEv1 → alias del cert |
-| 10015 | CbteTipo no autorizado para este emisor | El CUIT no puede emitir ese tipo de comprobante | Verificar régimen del CUIT (RI/monotributo); cambiar CbteTipo |
+| 10000 | Familia de rechazos de habilitación; el sub-código va en el mensaje: `01` el emisor no es Responsable Inscripto, `03` domicilio fiscal, `04` no autorizado a emitir clase A, `09` no autorizado a emitir A con leyenda (RG 5762, tipos 51-54) | El CUIT no tiene habilitada esa clase de comprobante en ARCA | Para `04`/`09`: la variante de Factura A configurada no coincide con la habilitada (ARCA la reevalúa cada trimestre); corregir la modalidad en Datos fiscales o el alta en ARCA |
+| 10005 | Punto de venta no dado de alta o no habilitado para RECE | El punto de venta no existe en ARCA o es de otro sistema | Dar de alta un punto de venta "RECE para aplicativo y web services" |
+| 10015 | Umbral de Factura B en pedidos múltiples | Según el manual, en una solicitud con varios comprobantes un monto de Factura B supera el umbral permitido sin identificar al receptor | Identificar al receptor o emitir los comprobantes por separado; NO es "CbteTipo no autorizado" |
+| 1429 / 815 | Observación: no habilitado a emitir clase A a la fecha de emisión | El CUIT aún no estaba habilitado para esa clase en la fecha del comprobante | Revisar la habilitación en ARCA y la fecha de emisión |
 | 10016 | El número del comprobante está fuera de secuencia | CbteDesde no es `lastAuthorized + 1` | Llamar `FECompUltimoAutorizado` y usar `+1` |
 | 10017 | La fecha del comprobante está fuera del rango permitido | CbteFch >5 días en pasado o >5 en futuro | Validar fecha; AFIP permite ±5 días |
 | 10018 | DocTipo no informado | Falta el campo DocTipo | Completar el campo |

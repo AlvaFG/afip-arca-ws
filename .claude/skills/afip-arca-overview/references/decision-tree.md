@@ -9,6 +9,11 @@ User asks about AFIP/ARCA?
 ├─ About issuing an invoice (CAE, FECAESolicitar)
 │  ├─ Domestic (mercado interno) →  afip-arca-wsfev1   (depends on: wsaa)
 │  └─ Export                     →  afip-arca-wsfexv1  (depends on: wsaa)
+├─ About controlador fiscal / impresora fiscal / tique / RG 3561
+│  └─→ afip-arca-controlador-fiscal
+├─ About tipos de punto de venta, modalidades, duplicados electrónicos,
+│  consumidor final, comprobantes válidos
+│  └─→ afip-arca-puntos-de-venta-y-modalidades
 ├─ About querying a CUIT (padrón, getPersona)
 │  └─→ afip-arca-padron  (depends on: wsaa, except A100 public)
 └─ Something is broken / 404 / SOAP fault / TLS error / "doesn't connect"

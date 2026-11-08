@@ -1,6 +1,6 @@
 ---
 name: afip-arca-overview
-description: Use this skill whenever the user mentions AFIP, ARCA, factura electrónica argentina, CAE, CUIT, padrón, WSAA, WSFE, WSFEX, homologación, .crt/.key/.p12 for AFIP, or asks how to integrate any Argentine tax-authority Web Service. This is the ROUTER skill — its job is to direct you to the specific sub-skill (afip-arca-certificates, afip-arca-wsaa, afip-arca-wsfev1, afip-arca-wsfexv1, afip-arca-padron, afip-arca-debugging) that matches the user's task. If 1% of the conversation might be about AFIP/ARCA, invoke this.
+description: Use this skill whenever the user mentions AFIP, ARCA, factura electrónica argentina, CAE, CUIT, padrón, WSAA, WSFE, WSFEX, homologación, controlador fiscal, punto de venta, .crt/.key/.p12 for AFIP, or asks how to integrate any Argentine tax-authority Web Service. This is the ROUTER skill — its job is to direct you to the specific sub-skill (afip-arca-certificates, afip-arca-wsaa, afip-arca-wsfev1, afip-arca-wsfexv1, afip-arca-padron, afip-arca-debugging) that matches the user's task. If 1% of the conversation might be about AFIP/ARCA, invoke this.
 ---
 
 # AFIP/ARCA Web Services — Overview / Router
@@ -15,6 +15,8 @@ This skill is the entry point for all AFIP/ARCA Web Services work. **You almost 
 | Generating a TRA, signing CMS, calling `loginCms`, caching the TA | `afip-arca-wsaa` |
 | Issuing invoices in Argentina (FECAESolicitar, CAE, mercado interno) | `afip-arca-wsfev1` |
 | Issuing export invoices (FEXAuthorize, monedas, incoterms) | `afip-arca-wsfexv1` |
+| Controlador fiscal / impresora fiscal / RG 3561 / tique / informe Z | `afip-arca-controlador-fiscal` |
+| Tipos de punto de venta, modalidades, duplicados electrónicos, consumidor final, comprobantes válidos | `afip-arca-puntos-de-venta-y-modalidades` |
 | Querying CUIT data (padrón A4/A5/A13/A100, getPersona) | `afip-arca-padron` |
 | "My AFIP client is failing" / FEDummy / homologación vs producción / SoapUI | `afip-arca-debugging` |
 
