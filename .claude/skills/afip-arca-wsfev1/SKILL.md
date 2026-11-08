@@ -24,7 +24,7 @@ The main domestic invoicing Web Service. You build a `FECAERequest`, call `FECAE
 4. `FECAESolicitar(Auth, FeCAEReq)` → returns `FeCabResp.Resultado` (`A` = approved, `R` = rejected, `P` = partial) and per-comprobante `CAE` + `CAEFchVto`.
 5. Persist CAE + numero + fecha for legal/tax record.
 
-Detailed method ref: `references/methods.md`. Type tables: `tipos-comprobante.md`, `tipos-doc.md`, `alicuotas-iva.md`. Error codes: `error-codes.md`.
+Detailed method ref: `references/methods.md`. Type tables: `tipos-comprobante.md`, `tipos-doc.md`, `alicuotas-iva.md`. Error codes: `error-codes.md`. Manual version history (4.0 to 4.8, incl. mandatory `CondicionIVAReceptorId` from 2026-12-01): `historial-manual.md`.
 
 ## Examples
 

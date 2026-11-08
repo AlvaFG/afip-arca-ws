@@ -4,7 +4,7 @@ Suite de **Claude Code skills** para integraciones con AFIP/ARCA Web Services + 
 
 ## ¿Qué incluye?
 
-### 7 skills bajo `.claude/skills/`
+### 9 skills bajo `.claude/skills/`
 
 | Skill | Para qué |
 |---|---|
@@ -15,6 +15,8 @@ Suite de **Claude Code skills** para integraciones con AFIP/ARCA Web Services + 
 | `afip-arca-wsfexv1` | Factura electrónica de exportación |
 | `afip-arca-padron` | Padrón A4/A5/A13/A100 (lookup CUIT) |
 | `afip-arca-debugging` | FEDummy, SoapUI, errores comunes, homo vs prod |
+| `afip-arca-controlador-fiscal` | Controlador fiscal / impresora fiscal, RG 3561, tique, informe Z |
+| `afip-arca-puntos-de-venta-y-modalidades` | Tipos de punto de venta, modalidades, duplicados electrónicos, consumidor final |
 
 Cada skill tiene `SKILL.md` (entry point), `references/` (cargados a demanda por Claude), `examples/{python,node,php,bash}/` (código completo), `scripts/` (helpers ejecutables) y `assets/` (plantillas).
 

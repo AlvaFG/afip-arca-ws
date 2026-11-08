@@ -26,8 +26,8 @@ Actualmente están disponibles los siguientes webservices de Factura Electrónic
 En la lista siguiente se indican la documentación disponible, según el servicio específico:
 
 - Para "wsseg - R.G. N° 2.668", consultar: [Manual para el desarrollador V.0.9](/ws/documentacion/manuales/WSSEG-ManualParaElDesarrollador_ARCA.pdf)
-- Para "wsfexv1 - R.G. N° 2.758", consultar: [Manual para el desarrollador V. 3.1.1](/ws/documentacion/manuales/WSFEX-Manualparaeldesarrollador_V3.1.1_ARCA.pdf)
+- Para "wsfexv1 - R.G. N° 2.758 y R.G. N° 4.401", consultar: [Manual para el desarrollador V. 3.1.1](/ws/documentacion/manuales/WSFEX-Manualparaeldesarrollador_V3.1.1_ARCA.pdf)
 - "wsct - R.G. N° 3.971" consultar: [Manual para el Desarrollador Comprobantes T V.1.6.4](/ws/documentacion/manuales/Manual_Desarrollador_WSCT_v1.6.4.pdf)
-- Para "wsfev1 - R.G. N° 4.291", consultar: [Manual para el desarrollador V. 4.1](/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG-v4-1.pdf)
-- Para "wsmtxca - R.G. N° 2.904", consultar: [Manual para el desarrollador V 0.25.4](/ws/documentacion/manuales/Web-Service-MTXCA-v25.pdf)
+- Para "wsfev1 - R.G. N° 4.291", consultar: [Manual para el desarrollador V. 4.7](/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG.pdf)
+- Para "wsmtxca - R.G. N° 2.904", consultar: [Manual para el desarrollador V 0.25.8](/fe/ayuda/documentos/wsmtxca-RG-2904.pdf)
 - Para "wsbfev1- R.G. N° 5427/2023 Y R.G. N° 2.861", consultar: [Manual para el desarrollador V. 3.0](/ws/documentacion/manuales/WSBFEV1-ManualParaElDesarrollador_ARCA_V3_0.pdf)

@@ -21,7 +21,7 @@ from urllib.parse import urljoin, urlparse
 import httpx
 import yaml
 from markdownify import markdownify as md
-from selectolax.parser import HTMLParser
+from selectolax.lexbor import LexborHTMLParser as HTMLParser
 
 DEFAULT_CONFIG = Path(__file__).parent / "config.yaml"
 
@@ -129,7 +129,7 @@ class DocsScraper:
         title_node = tree.css_first("h1") or tree.css_first("title")
         title = title_node.text(strip=True) if title_node else "Untitled"
         # AFIP often appends "| ARCA" — strip it
-        title = re.sub(r"\s*[|·]\s*ARCA\s*$", "", title, flags=re.I)
+        title = re.sub(r"\s*[|·]\s*ARCA\s*$", "", title, flags=re.IGNORECASE)
 
         # main content — try several selectors
         content = None
@@ -157,11 +157,10 @@ class DocsScraper:
         path = urlparse(url).path
         # strip prefix common to all docs
         prefix = urlparse(self.base_url).path.rstrip("/")
-        if path.startswith(prefix):
-            path = path[len(prefix):]
+        path = path.removeprefix(prefix)
         path = path.strip("/") or "index"
         # turn .asp into .md
-        path = re.sub(r"\.(asp|html?|php)$", "", path, flags=re.I)
+        path = re.sub(r"\.(asp|html?|php)$", "", path, flags=re.IGNORECASE)
         if path.endswith("/"):
             path += "index"
         return self.output_dir / f"{path}.md"
